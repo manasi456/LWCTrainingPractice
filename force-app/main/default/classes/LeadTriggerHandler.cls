@@ -3,8 +3,5 @@ public with sharing class LeadTriggerHandler {
 
     }
 
-    global static void name(List<Id> allRecords) {
-        
-    }
-
+   
 }
