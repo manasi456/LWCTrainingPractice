@@ -3,7 +3,7 @@
     <fullName>No_of_duplicate_Contacts__c</fullName>
     <externalId>false</externalId>
     <label>No of duplicate Contacts</label>
-    <precision>23</precision>
+    <precision>18</precision>
     <required>false</required>
     <scale>0</scale>
     <trackFeedHistory>false</trackFeedHistory>
