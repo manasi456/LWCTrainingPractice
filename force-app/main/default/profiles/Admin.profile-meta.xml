@@ -6,8 +6,13 @@
     </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.No_of_duplicate_Contacts__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
-        <field>Account.of_contacts__c</field>
+        <field>Account.of_contracts__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>

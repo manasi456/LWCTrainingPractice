@@ -47,7 +47,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>of_contacts__c</field>
+                <field>of_contracts__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
