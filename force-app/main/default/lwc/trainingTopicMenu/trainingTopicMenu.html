@@ -1,0 +1,51 @@
+<template>
+    <lightning-card  title="SF training Topics - Detail " icon-name="standard:asset_action">
+        <table class="slds-m-left_x-small">
+                <tr>
+                    <th>Topic Name</th>
+                    <th>Topic Category</th>
+                    <th>Topic Instructor</th>
+                </tr>
+                <template for:each={_SFTopics} for:item="topic"> 
+                    <tr key={topic.ID} class="slds-var-m-around_medium">
+                        
+                    <td>{topic.Topic_Name__c}</td>
+                    <td>{topic.Topic_Category__c}</td>
+                    <td>{topic.Instructor__c}</td>
+
+                    </tr>
+                </template> 
+
+    </table>
+           
+    </lightning-card>
+
+
+    <lightning-card  title="SF training Topics - Detail by Category" icon-name="standard:asset_action">
+            
+        <table class="slds-m-left_x-small">
+            <tr>
+                <th>Topic Name</th>
+                <th>Topic Category</th>
+                <th>Topic Instructor</th>
+            </tr>
+            <template for:each={topicsByCat} for:item="topic"> 
+                <tr key={topic.ID} class="slds-var-m-around_medium">
+                    
+                <td>{topic.Topic_Name__c}</td>
+                <td>{topic.Topic_Category__c}</td>
+                <td>{topic.Instructor__c}</td>
+
+                </tr>
+            </template> 
+
+</table>
+    
+    </lightning-card>
+
+
+    <c-training-topic-child-menu 
+    onsearchalltopics = {handleevent} 
+    onsearchtopicbycat = {handletopicbycat}>
+</c-training-topic-child-menu>
+</template>

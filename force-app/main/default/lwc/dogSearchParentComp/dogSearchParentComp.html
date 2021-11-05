@@ -1,0 +1,20 @@
+<template>
+
+<lightning-card title="Dog Breed Types (parent comp)">
+    <lightning-combobox class="slds-var-m-around_medium"
+    name="Select Dog Breed"
+            label="AVAILABLE BREEDS"
+            value={value}
+            placeholder="Select Breed To Show"
+            options={options}
+            onchange={handleChange}>
+        </lightning-combobox>
+        <template if:true={dogImage}>
+            <c-dog-search-child-comp  breedname = {dogImage.message}></c-dog-search-child-comp>
+            
+        </template>
+    </lightning-card>   
+
+
+
+</template>
