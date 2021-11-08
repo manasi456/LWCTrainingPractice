@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="SF training Topics - Records " icon-name="standard:asset_action">
+
+        <template for:each={_SFTopics} for:item="topic">
+            <li key={topic.ID} class="slds-var-m-around_medium"> <br>
+                Topic Name:: {topic.Topic_Name__c} <br>
+                Topic Category:: {topic.Topic_Category__c} <br>
+                Topic Instructor:: {topic.Instructor__c} <br>
+            </li>
+
+        </template>
+   
+
+    </lightning-card>
+
+    <c-training-topic-detail-child onsendalltopics = {handleShowAllTopics} 
+        onsendalltopicsnamesbycat = {handleShowAllTopicsByCat}>
+
+    </c-training-topic-detail-child> 
+
+    
+</template>

@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="child component" class="slds-var-p-around_small" icon-name="standard:account">
+        <lightning-card title="John" class="slds-var-p-around_small" icon-name="standard:lead">
+            <p class="slds-var-p-horizontal_x-small">Message = {messagefromfathertojohn}</p>
+        </lightning-card>
+
+        <lightning-card title="Lara" class="slds-var-p-around_small" icon-name="standard:lead">
+            <p class="slds-var-p-horizontal_x-small">Message = {messagefromfathertolara}</p>
+        </lightning-card>
+        
+        <lightning-card title="Ben" class="slds-var-p-around_small" icon-name="standard:lead">
+            <p class="slds-var-p-horizontal_x-small">Message = {messagefromfathertoben}</p>
+        </lightning-card>
+
+
+        
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="Enter Message [john" data-name = "john"></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label="Enter Message [lara" data-name = "lara"></lightning-input>
+            </div>
+
+            <lightning-button label="Send Message" title="Send Message" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+
+
+    </lightning-card>
+</template>

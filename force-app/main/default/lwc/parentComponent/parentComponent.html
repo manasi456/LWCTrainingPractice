@@ -1,0 +1,24 @@
+<template>
+    <lightning-card icon-name="standard:account" title="Parent Comp">
+
+     <lightning-card title="Messages"  class="slds-var-p-horizontal_x-small">
+         <p>Message from John : {johnsendmsg}</p>
+         <p>Message from Lara : {larasendmsg}</p>
+     </lightning-card>   
+
+
+        <div class="slds-var-p-horizontal_x-small">
+            <c-child-component 
+            messagefromfathertojohn = {sendmsgtojohn}
+            messagefromfathertolara = {sendmsgtolara}
+            messagefromfathertoben = {sendmsgtoben}
+            onsendmsgtofather = {handlereceivedmsg}
+            
+            >
+        </c-child-component> 
+        </div>
+
+    </lightning-card>
+
+    
+</template>
