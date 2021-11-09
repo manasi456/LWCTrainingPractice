@@ -5,10 +5,7 @@
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
-    <classAccesses>
-        <apexClass>SfApexClass</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
+   
     <classAccesses>
         <apexClass>SfApexClass1</apexClass>
         <enabled>false</enabled>

@@ -1,3 +1,50 @@
 <template>
+    <lightning-card title="Lightning Base Comp Comm" class="slds-m-left_x-small">
+      
+        <lightning-button label="Show All Topics" title="Send Message" onclick={showAllTrainingTopics} class="slds-m-left_x-small"></lightning-button>
+
+        
+        <lightning-button label="Create New SFTopics" title="Create New Record" onclick={createAllTopicsRecord} class="slds-var-m-left_small"></lightning-button>
+
+            <table class="slds-m-left_x-small">
+                <tr>
+                    <th>Topic Name</th>
+                    <th>Topic Category</th>
+                    <th>Topic Instructor</th>
+                    <th>Book Link</th>
+                </tr>
+                <template for:each={SFAllTrainingTopics_method3} for:item="topic"> 
+                    <tr key={topic.ID} class="slds-var-m-around_medium">
+                        
+                    <td>{topic.Topic_Name__c}</td>
+                    <td>{topic.Topic_Category__c}</td>
+                    <td>{topic.Instructor__c}</td>
+                    <td> <a href="#" onclick={navigateToAmazon}>     <lightning-avatar size="x-small" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg" initials="" fallback-icon-name="standard:person_account" alternative-text="Book link" class="slds-m-right_small" onclick={navigateToAmazon}></lightning-avatar>
+                    </a> 
+                    </td>
+                    
+                    </tr>
+                </template> 
+
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </lightning-card>
     
 </template>
