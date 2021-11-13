@@ -4,8 +4,7 @@ import { getPicklistValues } from 'lightning/uiObjectInfoApi';
 import GROCERY_OBJ from '@salesforce/schema/Grocery__c';
 import GROCERY_NAME from '@salesforce/schema/Grocery__c.Name';
 import GROCERY_CAT from '@salesforce/schema/Grocery__c.Grocery_Category__c';
-import showSummaryList from '@salesforce/apex/GroceryList.showSummaryList';
-import {refreshApex} from '@salesforce/apex';
+
 //Show Toast event
 import { ShowToastEvent} from 'lightning/platformShowToastEvent';
 export default class ChildGroceryComponent extends LightningElement {
@@ -13,11 +12,7 @@ export default class ChildGroceryComponent extends LightningElement {
     _groceryName = "";
     _groceryCat = "";
 
-    // wiredGroceryList = [];
-
-    // @wire(showSummaryList) grolist(result){
-    //     this.wiredGroceryList = result;
-    // }
+    
   
     @wire(getPicklistValues, { 
         recordTypeId: '012000000000000AAA',
@@ -51,15 +46,13 @@ export default class ChildGroceryComponent extends LightningElement {
                 variant : "success"
                  }));
 
-                //  this.grocery_method = true;
-                // this.dispatchEvent(new CustomEvent("sendrecorddetails",{
-                // detail : {
-                //     allitemname : this.grocery_method 
+                 this.grocery_method = true;
+                this.dispatchEvent(new CustomEvent("sendrecorddetails",{
+                detail : {
+                    allitemname : this.grocery_method 
                                
-                // }
-                // }));
-            //    refreshApex(this.wiredGroceryList);
-            location.reload();
+                }
+                }));
           
         }).catch(error => {
             console.log(error);

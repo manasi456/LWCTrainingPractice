@@ -1,12 +1,12 @@
 <template>
 
-<!--     
-    <c-child-grocery-component onsendrecorddetails={handlegrosarysummary}></c-child-grocery-component> -->
-    <c-child-grocery-component ></c-child-grocery-component>
+    
+    <c-child-grocery-component onsendrecorddetails={handlegrosarysummary}></c-child-grocery-component>
+  <!-- <c-child-grocery-component ></c-child-grocery-component> -->
 
-    <!-- <lightning-card title="Grocery List Summary " icon-name="standard:asset_action">
+    <lightning-card title="Grocery List Summary " icon-name="standard:asset_action" class="slds-var-m-around_medium">
 
-        <table class="slds-m-left-small">
+        <table class="slds-var-m-around_medium">
             <tr>
                 <th> Item</th>
                 <th> Category</th>
@@ -21,29 +21,7 @@
             </template> 
 
         </table>
-    </lightning-card> -->
-
-
-    <lightning-card title="Grocery List Summary">
-        <ul class="slds-var-m-around_medium">
-            <template for:each={lists} for:item="topic">
-                
-                <li key={topic.Id}>
-                    <h2 style="background-color: cornflowerblue;text-align:center;" ><b> {topic.category} </b></h2>
-                    <template for:each={topic.names} for:item="each">
-                
-                        <li key={each.Id}>
-                            {each.Name}   
-                        </li>
-                    </template>
-                </li>
-            </template>  
-        </ul>
-        
     </lightning-card>
-
-    
-   
 
     
 </template>
