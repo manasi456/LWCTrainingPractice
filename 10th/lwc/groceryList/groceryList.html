@@ -1,0 +1,22 @@
+<template>
+    
+    <c-grocery-create ></c-grocery-create>
+
+    <lightning-card title="Grocery List">
+        <ul class="slds-var-m-around_medium">
+            <template for:each={allData} for:item="eachOne">
+                
+                <li key={eachOne.Id}>
+                    <h2 style="background-color: cornflowerblue;text-align:center;" ><b> {eachOne.category} </b></h2>
+                    <template for:each={eachOne.items} for:item="each">
+                
+                        <li key={each.Id}>
+                            {each.Grocery_Item__c}   
+                        </li>
+                    </template>
+                </li>
+            </template>  
+        </ul>
+        
+    </lightning-card>
+</template>

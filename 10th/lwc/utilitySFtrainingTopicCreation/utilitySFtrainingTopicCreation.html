@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="SF-Topic Creation" icon-name="standard-education" >
+        <div class="slds-var-p-around_medium ">
+           
+            <lightning-input label = "Name" type="text" placeholder="Enter Topic Name" data-name="topicName" >
+            </lightning-input>
+
+            <lightning-input label = "Category" type="text" placeholder="Enter Topic Category" data-name="topicCategory" >
+            </lightning-input>
+
+            <lightning-input label = "Instructor" type="text" placeholder="Enter Topic Instructor" data-name="topicInstructor" >
+            </lightning-input>
+
+            
+            <div class="slds-var-p-around_medium">
+                <lightning-button label = "Create" variant = "brand"
+                type="button" onclick={createSFtopic} class="slds-var-p-around_medium slds-align_absolute-center" >
+                 </lightning-button>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

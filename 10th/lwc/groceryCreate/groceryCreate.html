@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="New Grocery" icon-name="standard-product_item">
+        <div class="slds-var-p-around_medium ">
+            <lightning-input type="text" data-name="groceryItem" label="Item" placeholder="Enter Glocery Item">
+            </lightning-input>
+            <lightning-input type="text" data-name="groceryCategory" label="Category" placeholder="Enter Glocery Category">
+            </lightning-input>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-var-p-medium">
+            <lightning-button type="button" label="Add" onclick={addGlocery} variant="brand">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Grocery Shop" class="slds-var-m-around_small ">
+        <div class="slds-m-around_small">
+            <lightning-input type="text" label="Grocery Item Name..." ></lightning-input>
+        </div>
+        <div class="slds-var-m-around_small">
+            <template if:true={catValues.data}>
+                <lightning-combobox  label="Grocery Category" value={value} 
+                    options={catValues.data.values} onchange={handleChangeCategory}>
+                </lightning-combobox>
+            </template>
+        </div>
+        <lightning-button variant="destructive" label="Create Record" title="Create Record"  onclick={createGroceryRecord} class="slds-var-p-around_medium slds-align_absolute-center"></lightning-button>
+      
+    </lightning-card>
+    
+</template>
