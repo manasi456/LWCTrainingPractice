@@ -13,4 +13,24 @@ public with sharing class SFTopicHelper {
                 Topic_Category__c  like :strCat WITH SECURITY_ENFORCED];
         
     }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Grocery__c> getGrocery() {
+
+        return [SELECT ID,Grocery_Item__c, Grocery_Category__c FROM Grocery__c 
+        WITH SECURITY_ENFORCED ];
+        
+
+    }
+
+ 
+    @AuraEnabled(cacheable=true)
+    public static List<Account>  getAccountList(){
+      return [Select Id,Name,Phone,Industry FROM Account  ORDER BY CreatedDate DESC LIMIT 5 ];
+    }
+
+
+
+
+
 }

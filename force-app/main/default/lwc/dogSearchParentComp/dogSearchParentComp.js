@@ -22,9 +22,7 @@ get options() {
             {
                 this.value = event.detail.value;
                 let endPoint = "https://dog.ceo/api/breed/"+this.value+"/images/random";
-                fetch(endPoint, {
-                    method: "GET"
-                })
+                fetch(endPoint, {method: "GET"})
                 .then((response) => response.json())
                 .then((dogImage) => {
                  this.dogImage = dogImage;

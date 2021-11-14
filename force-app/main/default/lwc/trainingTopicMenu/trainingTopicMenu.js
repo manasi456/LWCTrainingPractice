@@ -5,6 +5,7 @@ import fetchSFTrainingTopicsByCategory from '@salesforce/apex/SFTopicHelper.getS
 export default class TrainingTopicMenu extends LightningElement {
     _SFTopics;
     topicsByCat;
+    
     handleevent(event){
         const allTopiclst = event.detail.alltopiclist;
         showAllTrainingTopics()

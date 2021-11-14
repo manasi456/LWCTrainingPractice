@@ -3,6 +3,7 @@ import { LightningElement,wire } from 'lwc';
 export default class TrainingTopicChildMenu extends LightningElement {
     _IsAllTopic = false;
     _topicCategoryInput;
+  
     showAllTrainingTopics(){
         this._IsAllTopic = true;
         const showAllTopicevent =  new CustomEvent("searchalltopics",
@@ -12,6 +13,7 @@ export default class TrainingTopicChildMenu extends LightningElement {
          //Dispatch the event to parent
          this.dispatchEvent(showAllTopicevent);
     }
+   
     showAllTrainingTopicsByCat()
     {
         // Get the input as entered by the user
