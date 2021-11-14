@@ -1,0 +1,30 @@
+<template>
+
+    <lightning-card title={strTitle} class=" slds-var-p-around_medium">
+        <div class="slds-p-around_small lgc-bg ">
+            <lightning-input label="Record Id"  value={_accId} data-name="topic_id" disabled></lightning-input> 
+        </div>
+        <div class="slds-p-around_small lgc-bg">
+            <lightning-input type="text" label="Topic Name" placeholder="type here..." data-name='topic_name'></lightning-input>
+        </div>
+        <div class="slds-var-m-around_small">
+            <template if:true={catValues.data}>
+                <lightning-combobox  label="Topic Category" value={value} 
+                    options={catValues.data.values} onchange={handleChangeCategory}>
+                </lightning-combobox>
+            </template>
+        </div>
+        <div class="slds-var-m-around_small">
+            <template if:true={instrValues.data}>
+                <lightning-combobox  label="Topic Instructor" value={value} 
+                    options={instrValues.data.values} onchange={handleChangeInstructor}>
+                </lightning-combobox>
+            </template>
+        </div>
+        <lightning-button variant="destructive" label="Create Record" title="Create Record"  onclick={createSFRecord} class="slds-var-p-around_medium slds-align_absolute-center"></lightning-button>
+
+
+
+
+</lightning-card>
+</template>

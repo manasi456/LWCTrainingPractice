@@ -1,0 +1,46 @@
+<template>
+ 
+  <lightning-card title="Accordion ">
+  
+  <p><b>Initializing the Accordion with Multiple Active Sections</b></p>
+    <lightning-accordion 
+    allow-multiple-sections-open
+        active-section-name={activeSections}>
+        <lightning-accordion-section name="A" label="Accordion Title A">
+        <p>This is the content area for section A.</p>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="B" label="Accordion Title B">
+        <p>This is the content area for section B.</p>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="C" label="Accordion Title C">
+        <p>This is the content area for section C.</p>
+        </lightning-accordion-section>
+    </lightning-accordion>
+
+
+    <div>
+        <lightning-badge label="Beta"></lightning-badge>
+        <lightning-badge label="Gamma" icon-name="standard:event"></lightning-badge>
+        <lightning-badge label="Beta" icon-name="standard:email" icon-position="end"></lightning-badge>
+    </div>
+
+
+    <lightning-card>
+        <lightning-breadcrumbs>
+            <lightning-breadcrumb
+                label="Account"
+                onclick={handleNavigateToAccount}>
+            </lightning-breadcrumb>
+            <lightning-breadcrumb
+                label="Case"
+               onclick={handleNavigateToCase}>
+            </lightning-breadcrumb>
+        </lightning-breadcrumbs>
+    </lightning-card>
+
+
+
+</lightning-card>
+</template>
