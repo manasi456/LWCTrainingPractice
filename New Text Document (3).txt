@@ -1,0 +1,101 @@
+public with sharing class filter {
+    @AuraEnabled(cacheable=true)
+    public static list<Opportunity> getrecord(string queryname, string startdate, string enddate , string Search){
+        date st,en;
+        string j;
+        string soql ='select Name,StageName,CloseDate from opportunity';
+        if(String.isNotBlank(queryname) || String.isNotBlank(enddate) || String.isNotBlank(startdate) || String.isNotBlank(Search)){
+            soql +=' where';
+            if(String.isNotBlank(queryname)){
+                soql +=' and StageName = : queryname';
+            }
+            if(String.isNotBlank(enddate) && String.isNotBlank(startdate)){
+                st =Date.valueOf(startdate);
+                en =Date.valueOf(enddate);
+               soql +=' and CloseDate > : st and CloseDate < : en';
+           } if(String.isNotBlank(Search)){
+             j= '%'+Search+'%';
+               soql += ' and Name like :j';
+           }
+        }
+        soql=soql.replace('where and','Where');
+        System.debug(soql);
+        return database.query(soql);
+    }
+}
+
+
+import { LightningElement,wire } from 'lwc';
+import { getPicklistValues } from 'lightning/uiObjectInfoApi';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity';
+import STAGENAME_FIELD from '@salesforce/schema/Opportunity.StageName';
+import FILTER_CLASS from '@salesforce/apex/filter.getrecord';
+const columns =[{label: 'Name',fieldName:'Name'},{label: 'stage',fieldName:'StageName'},{label: 'Closedate',fieldName:'CloseDate'}];
+export default class Filter extends LightningElement {
+    columns=columns;
+    data;
+    stageName ='';
+    startdate='';
+    enddate='';
+    search='';
+    @wire(getObjectInfo, { objectApiName: OPPORTUNITY_OBJECT })
+    objectInfo;
+    @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: STAGENAME_FIELD})
+    PicklistValues;
+    @wire(FILTER_CLASS,{queryname : '$stageName',startdate :'$startdate',enddate :'$enddate', Search : '$search'})
+    getrecord({data,error}){
+        if(data){
+            this.data=data;
+        }
+    }
+    handleChange(event){
+        if(event.target.label=='Stage Name'){
+        this.stageName=event.target.value;}
+        if(event.target.label=='start date'){
+        this.startdate=event.target.value}
+        if(event.target.label=='End date'){
+        this.enddate=event.target.value}
+        if(event.target.label=='Search'){
+        this.search=event.target.value;
+        }
+    }
+
+    handleClick(){
+        this.stageName='';
+        this.startdate='';
+        this.enddate='';
+        this.search='';
+    }
+}
+
+<template>
+    <lightning-card>
+         <template if:true={PicklistValues.data}>
+      <lightning-button variant="brand" label="Reset Filter"  onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+      <lightning-input type="text" label="Search" onchange={handleChange} ></lightning-input>
+        <lightning-combobox
+                            label="Stage Name"
+                            value={value}
+                            placeholder="-Select-"
+                            options={PicklistValues.data.values}
+                            onchange={handleChange} >
+        </lightning-combobox>
+        <br>
+        <lightning-input type="date" name="startdate" label="start date"  onchange={handleChange} ></lightning-input>
+        <lightning-input type="date" name="enddate" label="End date"   onchange={handleChange}></lightning-input>
+        <lightning-datatable
+        key-field="id"
+        columns={columns}
+        data={data}
+        hide-checkbox-column
+        default-sort-direction={defaultSortDirection}
+        sorted-direction={sortDirection}
+        sorted-by={sortedBy}
+        onsort={onHandleSort}>
+</lightning-datatable>
+  </template>
+</lightning-card>
+</template>
+
+
