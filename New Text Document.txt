@@ -1,0 +1,68 @@
+details.js
+
+import { LightningElement, wire, api } from "lwc";
+import { getRecord, getFieldValue } from "lightning/uiRecordApi";
+import Place_Name from "@salesforce/schema/Place__c.Place_name__c";
+import Country from "@salesforce/schema/Place__c.Country__c";
+import State from "@salesforce/schema/Place__c.State__c";
+import City from "@salesforce/schema/Place__c.City__c";
+import Type from "@salesforce/schema/Place__c.Type__c";
+import Knownfor from "@salesforce/schema/Place__c.Known_for__c";
+import PlaceImage from "@salesforce/schema/Place__c.Place_Image__c";
+
+const fields = [Place_Name,Country,State,City,Type,Knownfor,PlaceImage];
+export default class Details extends LightningElement {
+  @api
+  recordId='a005j00000ASaOVAA1';
+
+  @wire(getRecord, {
+    recordId: "$recordId",
+    fields
+  })
+  place;
+
+  renderedCallback() {
+    console.log(this.place.data);
+  }
+  
+  get placename() {
+    return getFieldValue(this.place.data, Place_Name);
+  }
+
+  get country() {
+    return getFieldValue(this.place.data, Country);
+  }
+
+  get state() {
+    return getFieldValue(this.place.data, State);
+  }
+
+  get city() {
+    return getFieldValue(this.place.data, City);
+  }
+
+  get type() {
+    return getFieldValue(this.place.data, Type);
+  }
+
+  get Knownfor() {
+    return getFieldValue(this.place.data, Knownfor);
+  }
+
+  get PlaceImage() {
+    return getFieldValue(this.place.data, PlaceImage);
+  }
+
+}
+
+
+details.htmkl
+<template>
+    <p>Image: {PlaceImage}</p>
+    <p>Place Name: {placename}</p>
+    <p>Country: {country}</p>
+    <p>State: {state}</p>
+    <p>City: {city}</p>
+    <p>Type: {type}</p>
+    <p>Known for: {Knownfor}</p>
+</template>
