@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Get PicklistValues">
+      <div>
+            <template if:true={industrypicklistvalue.data}>
+                    <lightning-combobox name="Industry" label="Industry" value={picklistvaluesforindustry}
+                    placeholder="select" options={industrypicklistvalue.data.values} onchange={handlechange}>
+                </lightning-combobox>
+        </template>
+    </div>
+<div>
+        <template if:true={typepicklistvalue.data}>
+            <lightning-combobox name="Type" label="Type" value={picklistvaluesfortype}
+            placeholder="select" options={typepicklistvalue.data.values} onchange={handlechange}>
+        </lightning-combobox>
+</template></div>
+        
+    </lightning-card>
+</template>
+
+
+
+
+import { LightningElement,wire } from 'lwc';
+import ACCOUNT_OBJECT from '@salesforce/schema/Account';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import { getPicklistValues } from 'lightning/uiObjectInfoApi';
+import INDUSTRY from '@salesforce/schema/Account.Industry';
+import TYPE from '@salesforce/schema/Account.Type';
+export default class GetPicklistDemo extends LightningElement {
+    picklistvaluesforindustry;
+    picklistvaluesfortype;
+    @wire(getObjectInfo,{objectApiName:ACCOUNT_OBJECT}) objectInfo;
+    
+    @wire(getPicklistValues,{recordTypeId: '$objectInfo.data.defaultRecordTypeId',fieldApiName:INDUSTRY })industrypicklistvalue;
+    @wire(getPicklistValues,{recordTypeId: '$objectInfo.data.defaultRecordTypeId',fieldApiName:TYPE })typepicklistvalue;
+
+    handlechange(event){
+        this.picklistvaluesforindustry = event.target.value;
+    }
+
+    handlechange(event){
+        this.picklistvaluesfortype = event.target.value;
+    }
+
+}
